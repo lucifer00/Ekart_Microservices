@@ -1,0 +1,5 @@
+package com.ekart.address.service;
+
+public class AddressService {
+
+}

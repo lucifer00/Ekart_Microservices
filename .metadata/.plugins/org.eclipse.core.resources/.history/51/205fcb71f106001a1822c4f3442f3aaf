@@ -1,0 +1,7 @@
+server.port=3333
+spring.application.name=ZuulServer
+eureka.client.service-url.defaultZone=http://localhost:2222/eureka
+
+zuul.routes.account.path=/**
+zuul.routes.account.strip-prefix=false
+zuul.routes.account.service-id=PlanMS

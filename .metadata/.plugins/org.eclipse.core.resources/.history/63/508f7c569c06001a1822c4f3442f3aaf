@@ -1,0 +1,11 @@
+package com.ekart.cart.dto;
+
+import java.util.List;
+
+public class CartDto {
+	private List<CartDetailsDto> cartdetails;
+	private double totalPrice;
+	private int totalDeliveryCharge;
+	private double grandTotal;
+	
+}

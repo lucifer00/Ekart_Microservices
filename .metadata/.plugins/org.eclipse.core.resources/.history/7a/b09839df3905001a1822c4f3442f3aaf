@@ -1,0 +1,5 @@
+package com.ekart.account.service;
+
+public class AccountService {
+
+}

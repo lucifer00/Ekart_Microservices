@@ -1,0 +1,24 @@
+package com.ekart.address.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.ekart.address.dto.AddressDto;
+import com.ekart.address.entity.Address;
+import com.ekart.address.repository.AddressRepository;
+
+@Service
+public class AddressService {
+	@Autowired 
+	AddressRepository addressRepository;
+	public String addAddress(String userId,AddressDto addressDto) {
+		long count=addressRepository.count();
+		Address address=new Address();
+		address.setAddress(addressDto.getAddress());
+		address.setAddressId("A"+count+1);
+		address.setCity(addressDto.getCity());
+		address.setPhonenumber(addressDto.getPhonenumber());
+		address.setPincode(addressDto.getPincode());
+		address.setState(addressDto.getState());
+	}
+}

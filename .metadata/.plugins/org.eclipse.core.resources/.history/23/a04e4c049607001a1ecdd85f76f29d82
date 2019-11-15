@@ -1,0 +1,5 @@
+package com.ekart.cart.controller;
+
+public class CartFeign {
+
+}

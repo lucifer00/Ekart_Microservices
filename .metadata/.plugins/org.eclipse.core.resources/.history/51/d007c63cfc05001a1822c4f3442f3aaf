@@ -1,0 +1,5 @@
+package com.ekart.cart.entity;
+
+public class Cart {
+
+}

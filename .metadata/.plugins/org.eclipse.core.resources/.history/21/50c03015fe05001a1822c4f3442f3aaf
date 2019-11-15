@@ -1,0 +1,7 @@
+package com.ekart.cart.dto;
+
+public class AddCartDto {
+	private String product_id;
+	private int quantity;
+	
+}

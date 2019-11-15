@@ -1,0 +1,5 @@
+package com.ekart.address.dto;
+
+public class AddressDto {
+
+}

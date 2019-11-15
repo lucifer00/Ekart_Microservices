@@ -1,0 +1,5 @@
+package com.ekart.address.entity;
+
+public class Address {
+
+}

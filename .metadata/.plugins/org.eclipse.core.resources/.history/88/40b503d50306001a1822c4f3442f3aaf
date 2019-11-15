@@ -1,0 +1,17 @@
+package com.ekart.cart.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.ekart.cart.dto.AddCartDto;
+import com.ekart.cart.entity.Cart;
+import com.ekart.cart.repository.CartRepository;
+
+@Service
+public class CartService {
+	@Autowired
+	CartRepository repository;
+	public boolean addToKArt(AddCartDto dto) {
+		Cart cart=new Cart();
+	}
+}

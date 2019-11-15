@@ -1,0 +1,11 @@
+package com.ekart.cart;
+
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class CartConfig {
+	@Bean @LoadBalanced
+	RestTemplate restTemplate() {
+		return new RestTemplate();
+	}
+}

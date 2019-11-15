@@ -1,0 +1,42 @@
+package com.ekart.account.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.ekart.account.dto.UserDto;
+import com.ekart.account.entity.User;
+import com.ekart.account.exception.EmailIdInUseException;
+import com.ekart.account.repository.UserRepository;
+
+@Service
+public class AccountService {
+	@Autowired
+	UserRepository repository;
+	public void createUser(UserDto dto)throws EmailIdInUseException {
+		User user=dto.createUser(dto);
+		System.out.println(repository.findByEmail(user.getEmail()));
+		if(repository.findByEmail(user.getEmail()).size()!=0) {
+			throw new EmailIdInUseException("Email id already present");
+		}
+		else 
+		repository.save(user);
+	}
+	public boolean login(UserDto dto) {
+		User user=repository.getOne(dto.getUserId());
+		if(user.getPassword().equals(dto.getPassword()))return true;
+		return false;
+	}
+	public UserDto getProfile(String userId) {
+		User user=repository.getOne(userId);
+		UserDto toRet=new UserDto();
+		toRet.setEmail(user.getEmail());
+		toRet.setName(user.getName());
+		return toRet;
+	}
+	public boolean update(UserDto userDto,String userId) {
+		boolean toRet=false;
+		User user=repository.getOne(userId);
+		User 
+		return toRet;
+	}
+}

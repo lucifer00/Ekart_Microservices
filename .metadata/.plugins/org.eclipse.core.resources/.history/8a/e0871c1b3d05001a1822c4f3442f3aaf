@@ -1,0 +1,5 @@
+package com.ekart.account.controller;
+
+public class ExceptionControllerAdvice {
+
+}

@@ -1,0 +1,12 @@
+package com.ekart.cart.entity;
+
+import java.io.Serializable;
+
+public class CartId implements Serializable {
+	private String user_id;
+	private String product_id;
+	public CartId(String user_id,String product_id) {
+		this.user_id=user_id;
+		this.product_id=product_id;
+	}
+}

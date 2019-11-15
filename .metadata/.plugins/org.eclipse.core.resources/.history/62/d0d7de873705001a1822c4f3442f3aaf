@@ -1,0 +1,5 @@
+package com.ekart.account.dto;
+
+public class UserDto {
+
+}

@@ -16,24 +16,23 @@ import com.ekart.account.service.AccountService;
 @CrossOrigin
 public class AccountController {
 	@Autowired
-	AccountService service;
+	AccountService accountService;
 	@PostMapping(value = "/account/signup",consumes =MediaType.APPLICATION_JSON_VALUE)
 	public String Register(@RequestBody UserDto userDto) throws EmailIdInUseException {
-		service.createUser(userDto);
+		accountService.createUser(userDto);
 		return userDto.getUserId();
 	}
 	@PostMapping(value = "/account/login",consumes =MediaType.APPLICATION_JSON_VALUE)
 	@CrossOrigin
 	public boolean Login(@RequestBody UserDto userDto){
-		return service.login(userDto);
+		return accountService.login(userDto);
 	}
 	@GetMapping("/account/{userId}")
-	public UserDto getProfile(@PathVariable String userId) {
-		return service.getProfile(userId);
+	public UserDto getProfileForUserId(@PathVariable String userId) {
+		return accountService.getProfileForUserId(userId);
 	}
 	@PostMapping("/account/{userId}/update")
-	public boolean updateProfile(@RequestBody UserDto userDto,@PathVariable String userId) {
-		System.out.println(userDto.toString());
-		return service.updateProfile(userDto, userId);
+	public boolean updateProfileOfUserId(@RequestBody UserDto userDto,@PathVariable String userId) {
+		return accountService.updateProfileOfUserId(userDto, userId);
 	}
 }

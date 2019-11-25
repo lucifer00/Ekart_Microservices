@@ -11,31 +11,31 @@ import com.ekart.account.repository.UserRepository;
 @Service
 public class AccountService {
 	@Autowired
-	UserRepository repository;
+	UserRepository userRepository;
 	public void createUser(UserDto dto)throws EmailIdInUseException {
 		User user=dto.createUser(dto);
-		System.out.println(repository.findByEmail(user.getEmail()));
-		if(repository.findByEmail(user.getEmail()).size()!=0) {
+		if(userRepository.findByEmail(user.getEmail()).size()!=0) {
 			throw new EmailIdInUseException("Email id already present");
 		}
 		else 
-		repository.save(user);
+			userRepository.save(user);
 	}
 	public boolean login(UserDto dto) {
-		User user=repository.getOne(dto.getUserId());
-		if(user.getPassword().equals(dto.getPassword()))return true;
+		User user=userRepository.getOne(dto.getUserId());
+		if(user.getPassword().equals(dto.getPassword()))
+			return true;
 		return false;
 	}
-	public UserDto getProfile(String userId) {
-		User user=repository.getOne(userId);
+	public UserDto getProfileForUserId(String userId) {
+		User user=userRepository.getOne(userId);
 		UserDto toRet=new UserDto();
 		toRet.setEmail(user.getEmail());
 		toRet.setName(user.getName());
 		return toRet;
 	}
-	public boolean updateProfile(UserDto userDto,String userId) {
+	public boolean updateProfileOfUserId(UserDto userDto,String userId) {
 		boolean toRet=false;
-		User user=repository.getOne(userId);
+		User user=userRepository.getOne(userId);
 		User newDetails=new User();
 		newDetails.setEmail(userDto.getEmail());
 		newDetails.setName(userDto.getName());
@@ -44,7 +44,8 @@ public class AccountService {
 			newDetails.setPassword(user.getPassword());
 		else
 			newDetails.setPassword(userDto.getPassword());
-		if(repository.saveAndFlush(newDetails)!=null)toRet=true;
+		if(userRepository.saveAndFlush(newDetails)!=null)
+			toRet=true;
 		return toRet;
 	}
 }

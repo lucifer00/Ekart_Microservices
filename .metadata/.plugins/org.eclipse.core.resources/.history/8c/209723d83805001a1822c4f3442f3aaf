@@ -1,5 +1,0 @@
-package com.ekart.account.repository;
-
-public interface UserRepository {
-
-}

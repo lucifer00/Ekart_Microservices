@@ -1,5 +1,0 @@
-package com.ekart.account.exception;
-
-public class EmailIdInUseException {
-
-}

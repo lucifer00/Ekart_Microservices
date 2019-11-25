@@ -1,8 +1,0 @@
-package com.ekart.cart.controller;
-
-import org.springframework.cloud.openfeign.FeignClient;
-
-@FeignClient("ProductMS")
-public class CartFeign {
-
-}

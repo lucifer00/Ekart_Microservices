@@ -26,17 +26,17 @@ import com.ekart.cart.service.CartService;
 @CrossOrigin
 public class CartController {
 	@Autowired
-	CartService service;
+	CartService cartService;
 	
 	@Autowired
 	CartHystrixService cartHystService;
 	@PostMapping("/cart/{userId}/addtokart")
-	public boolean addToKart(@RequestBody AddCartDto dto,@PathVariable String userId) {
-		return service.addToKArt(dto, userId);
+	public boolean addToKartOfUser(@RequestBody AddCartDto dto,@PathVariable String userId) {
+		return cartService.addToKartOfUser(dto, userId);
 	}
 	@GetMapping("/cart/{userId}/kart")
-	public CartDto getKart(@PathVariable String userId) throws InterruptedException, ExecutionException {
-		List<Cart> carts=service.getKart(userId);
+	public CartDto getKartOfUser(@PathVariable String userId) throws InterruptedException, ExecutionException {
+		List<Cart> carts=cartService.getKartOfUser(userId);
 		CartDto toRet=new CartDto();
 		List<CartDetailsDto> cartDetails=new ArrayList<>();
 		double totalprice=0.0;
@@ -61,21 +61,22 @@ public class CartController {
 		}
 		toRet.setCartdetails(cartDetails);
 		toRet.setTotalPrice(totalprice);
-		if(totalprice>1000)totaldeliverycharge=0;
+		if(totalprice>1000)
+			totaldeliverycharge=0;
 		toRet.setTotalDeliveryCharge(totaldeliverycharge);
 		toRet.setGrandTotal(totalprice+totaldeliverycharge);
 		return toRet;
 	}
 	@PostMapping("/cart/{userId}/modifykart/update")
-	public boolean updateKart(@RequestBody AddCartDto dto,@PathVariable String userId) {
-		return service.updateKart(dto,userId);
+	public boolean updateKartOfUser(@RequestBody AddCartDto dto,@PathVariable String userId) {
+		return cartService.updateKartOfUser(dto,userId);
 	}
 	@PostMapping("/cart/{userId}/modifykart/delete")
-	public void updateKartDelete(@RequestBody AddCartDto dto,@PathVariable String userId) {
-		service.updateKartDelete(dto,userId);
+	public void updateKartDeleteOfUser(@RequestBody AddCartDto dto,@PathVariable String userId) {
+		cartService.updateKartDeleteOfUser(dto,userId);
 	}
 	@GetMapping("/cart/{userId}/cartcount")
-	public int getCartCount(@PathVariable String userId) {
-		return service.getCartCount(userId);
+	public int getCartCountOfUser(@PathVariable String userId) {
+		return cartService.getCartCountOfUser(userId);
 	}
 }

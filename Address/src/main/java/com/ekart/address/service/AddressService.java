@@ -31,7 +31,7 @@ public class AddressService {
 		address.setUserId(userId);
 		return addressRepository.saveAndFlush(address).getAddressId();
 	}
-	public List<AddressDto> getAllAddresses(String userId){
+	public List<AddressDto> getAllAddressesOfUser(String userId){
 		List<Address> addresses=addressRepository.findByUserId(userId);
 		List<AddressDto> toRet=new ArrayList<>();
 		for(Address address:addresses) {
@@ -46,7 +46,7 @@ public class AddressService {
 		}
 		return toRet;
 	}
-	public String modifyAddress(String userId,String addressId,AddressDto addressDto) {
+	public String modifyAddressOfUser(String userId,String addressId,AddressDto addressDto) {
 		Address address=new Address();
 		address.setAddress(addressDto.getAddress());
 		address.setAddressId(addressId);
@@ -57,7 +57,7 @@ public class AddressService {
 		address.setUserId(userId);
 		return addressRepository.saveAndFlush(address).getAddressId();
 	}
-	public void deleteAddress(String userId,String addressId) {
+	public void deleteAddressOfUser(String userId,String addressId) {
 		addressRepository.deleteById(addressId);
 	}
 }

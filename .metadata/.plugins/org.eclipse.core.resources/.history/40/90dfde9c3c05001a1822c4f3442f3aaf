@@ -1,6 +1,0 @@
-package com.ekart.account.entity;
-
-public class Error {
-	private int errorCode;
-	private String message;
-}

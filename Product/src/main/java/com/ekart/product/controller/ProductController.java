@@ -15,13 +15,13 @@ import com.ekart.product.service.ProductService;
 @CrossOrigin
 public class ProductController {
 	@Autowired
-	ProductService service;
+	ProductService productService;
 	@GetMapping("/product/products")
-	public List<ProductDto> allProducts() {
-		return service.getAllProducts();
+	public List<ProductDto> getAllProducts() {
+		return productService.getAllProducts();
 	}
 	@GetMapping("/product/products/{prodId}")
 	public ProductDto getSpecificProduct(@PathVariable String prodId) {
-		return service.getSpecificProduct(prodId);
+		return productService.getSpecificProduct(prodId);
 	}
 }

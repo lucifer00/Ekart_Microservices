@@ -15,7 +15,7 @@ import com.ekart.cart.repository.CartRepository;
 public class CartService {
 	@Autowired
 	CartRepository repository;
-	public boolean addToKArt(AddCartDto dto,String user_id) {
+	public boolean addToKartOfUser(AddCartDto dto,String user_id) {
 		Cart cart=new Cart();
 		cart.setQuantity(dto.getQuantity());
 		cart.setCartId(new CartId(user_id, dto.getProduct_id()));
@@ -23,24 +23,24 @@ public class CartService {
 		return false;
 	}
 	
-	public List<Cart> getKart(String user_id) {
+	public List<Cart> getKartOfUser(String user_id) {
 		List<Cart> carts=repository.findByCartIdUserId(user_id);
 		return carts;
 	}
-	public boolean updateKart(AddCartDto dto,String user_id) {
+	public boolean updateKartOfUser(AddCartDto dto,String user_id) {
 		Cart cart=new Cart();
 		cart.setQuantity(dto.getQuantity());
 		cart.setCartId(new CartId(user_id, dto.getProduct_id()));
 		if(repository.saveAndFlush(cart)!=null)return true;
 		return false;
 	}
-	public void updateKartDelete(AddCartDto dto,String user_id) {
+	public void updateKartDeleteOfUser(AddCartDto dto,String user_id) {
 		Cart cart=new Cart();
 		cart.setQuantity(dto.getQuantity());
 		cart.setCartId(new CartId(user_id, dto.getProduct_id()));
 		repository.delete(cart);
 	}
-	public int getCartCount(String userId) {
+	public int getCartCountOfUser(String userId) {
 		List<Cart> carts=repository.findByCartIdUserId(userId);
 		return carts.size();
 	}
